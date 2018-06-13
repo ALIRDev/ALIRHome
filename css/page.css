@@ -193,6 +193,10 @@ a {
     padding-bottom: 5px;
 }
 
+.card-img-top:hover{
+    border: #0056b3 2px solid;
+}
+
 .card-img-top{
     width: 100%;
     height: 45px;
