@@ -3,20 +3,23 @@
 /* GLOBAL STYLES
 -------------------------------------------------- */
 
+html{
+    font-family: 'Exo', sans-serif;
+}
+
 body {
     padding-top: 5.7rem;
     padding-bottom: 3rem;
     color: #ffffff;
     font-family: 'Exo', sans-serif;
-    background: url("https://www.alir.eu/etero/sectionImages/homepage/arma_def.jpg") repeat-y fixed center top #000000;
+    background: #1a1c1f;
 }
 
 nav{
-    font-family: 'Exo', sans-serif;
-    font-size: xx-large;
+    font-size: x-large;
     font-weight: bold;
-    background: linear-gradient(141deg, #2D3035 0%, #2D3035 51%, #212327 75%);
-    border-bottom: 1px solid #4d5055;
+    background: linear-gradient(141deg, #404040 0%, #393939 51%, #333333 75%);
+    border-bottom: 1px solid #333333;
 }
 
 a{
@@ -24,19 +27,16 @@ a{
 }
 
 .worksans{
-    font-family: 'Exo', sans-serif;
     font-weight: bold;
     text-transform: uppercase;
 }
 
 .wstitle{
-    font-family: 'Exo', sans-serif;
     font-weight: bold;
     text-transform: capitalize;
 }
 
 .tip {
-    font-family: 'Exo', serif;
     position: absolute;
     color: rgb(117, 117, 117);
     margin: 10px 5px;
