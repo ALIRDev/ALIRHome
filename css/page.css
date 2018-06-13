@@ -1,9 +1,27 @@
 @import url('https://fonts.googleapis.com/css?family=Exo');
-
+@import url('https://fonts.googleapis.com/css?family=Indie+Flower');
+@import url('https://fonts.googleapis.com/css?family=Krona+One');
 /* GLOBAL STYLES
 -------------------------------------------------- */
 
-html{
+.font-krona {
+    font-family: 'Krona One', sans-serif;
+}
+
+.font-indie {
+    font-family: 'Indie Flower', cursive;
+}
+
+footer {
+    padding-top: 3rem;
+    padding-bottom: 3rem;
+}
+
+footer p {
+    margin-bottom: .25rem;
+}
+
+html {
     font-family: 'Exo', sans-serif;
 }
 
@@ -15,23 +33,23 @@ body {
     background: #1a1c1f;
 }
 
-nav{
+nav {
     font-size: x-large;
     font-weight: bold;
     background: linear-gradient(141deg, #404040 0%, #393939 51%, #333333 75%);
     border-bottom: 1px solid #333333;
 }
 
-a{
+a {
     color: #f8f9fa;
 }
 
-.worksans{
+.worksans {
     font-weight: bold;
     text-transform: uppercase;
 }
 
-.wstitle{
+.wstitle {
     font-weight: bold;
     text-transform: capitalize;
 }
@@ -43,21 +61,26 @@ a{
 }
 
 /* Carousel base class */
+
 .carousel {
     margin-bottom: 1%;
 }
+
 /* Since positioning the image, we need to help out the caption */
+
 .carousel-caption {
     bottom: 3rem;
     z-index: 10;
 }
 
 /* Declare heights because of positioning of img element */
+
 .carousel-item {
     height: 20rem;
     background-color: #777;
 }
-.carousel-item > img {
+
+.carousel-item>img {
     position: absolute;
     top: 0;
     left: 0;
@@ -66,28 +89,31 @@ a{
 }
 
 /* Center align the text within the three columns below the carousel */
+
 .marketing .col-lg-4 {
     margin-bottom: 1.5rem;
     text-align: center;
 }
+
 .marketing h2 {
     font-weight: 400;
 }
+
 .marketing .col-lg-4 p {
     margin-right: .75rem;
     margin-left: .75rem;
 }
 
-.infolink{
+.infolink {
     padding-left: 5px;
     cursor: pointer;
 }
 
-.infolink:hover{
+.infolink:hover {
     color: #0056b3 !important;
 }
 
-.card-footer{
+.card-footer {
     color: #5f5f64 !important;
 }
 
@@ -101,7 +127,6 @@ a{
         font-size: 1.25rem;
         line-height: 1.4;
     }
-
     .featurette-heading {
         font-size: 50px;
     }
@@ -121,15 +146,15 @@ a{
     min-width: 220px;
 }
 
-.fas{
+.fas {
     position: relative;
     /* Adjust these values accordingly */
     top: 5px;
     left: 5px;
 }
 
-.button-arma{
-    background-color: rgba(0,0,0,.35);
+.button-arma {
+    background-color: rgba(0, 0, 0, .35);
     box-shadow: 0 0 6px -1px #000;
     border-radius: 0 !important;
     border: 1px solid #000;
@@ -137,8 +162,8 @@ a{
     color: white;
 }
 
-.button-arma:hover{
-    background-color: hsla(0,0%,100%,.08);
+.button-arma:hover {
+    background-color: hsla(0, 0%, 100%, .08);
     box-shadow: 0 0 6px -1px #000;
     border-radius: 0 !important;
     border: 1px solid #000;
@@ -146,7 +171,7 @@ a{
     color: white;
 }
 
-.card{
+.card {
     margin-top: 10px;
     padding-right: 12px;
     padding-bottom: 7px;
@@ -156,29 +181,29 @@ a{
     opacity: 1;
     transition: opacity 1000ms ease-out 0s;
     border: 1px solid #000;
-    background-color: hsla(0,0%,100%,.08);
+    background-color: hsla(0, 0%, 100%, .08);
 }
 
-.services-line{
-    background-color: rgba(0,0,0,.35);
+.services-line {
+    background-color: rgba(0, 0, 0, .35);
     box-shadow: 0 0 6px -1px #000;
     border-radius: 0 !important;
     border: 1px solid #000;
     text-align: center;
 }
 
-.carosel-style-black{
-    background-color: rgba(0,0,0,.35);
+.carosel-style-black {
+    background-color: rgba(0, 0, 0, .35);
 }
 
-.title-carosel{
+.title-carosel {
     font-weight: bold;
     font-size: larger;
 }
 
-.card-black{
+.card-black {
     margin-bottom: 10px;
-    background-color: rgba(0,0,0,.35);
+    background-color: rgba(0, 0, 0, .35);
     box-shadow: 0 0 6px -1px #000;
     font-size: 20px;
     border-radius: 0 !important;
@@ -187,25 +212,26 @@ a{
     text-align: center;
 }
 
-.footer-black{
-    background-color: rgba(0,0,0,.35);
+.footer-black {
+    background-color: rgba(0, 0, 0, .35);
     box-shadow: 0 0 6px -1px #000;
     border: 1px solid #000;
     padding: 2%;
     border-radius: 0 !important;
 }
 
-.modal-content{
+.modal-content {
     border-color: #2b2b2f;
     background-color: #2d3035;
     color: #ffffff;
 }
 
-.list-group-item{
+.list-group-item {
     border-color: #2b2b2f;
     background-color: #2d3035;
     color: #ffffff;
 }
+
 /* SOCIAL ICON
 -------------------------------------------------- */
 
@@ -220,8 +246,9 @@ a{
     height: 0;
     margin: 1% 1%;
     padding-bottom: 14%;
-    padding-right:10px;
+    padding-right: 10px;
 }
+
 .aliricon a {
     display: block;
     position: absolute;
@@ -238,7 +265,7 @@ a{
 }
 
 .aliricon a:hover {
-    background-color: rgba(0,0,0,.35);
+    background-color: rgba(0, 0, 0, .35);
     box-shadow: 0 0 6px -1px #000;
     font-size: 20px;
     color: #ffffff ! important;
@@ -278,51 +305,49 @@ a{
 .aliricon-facebook a {
     background-image: url("https://alir.eu/etero/social/facebook.svg");
 }
+
 .aliricon-twitter a {
     background-image: url("https://alir.eu/etero/social/twitter.svg");
 }
+
 .aliricon-telegram a {
     background-image: url("https://alir.eu/etero/social/telegram.svg");
 }
+
 .aliricon-youtube a {
     background-image: url("https://alir.eu/etero/social/youtube.svg");
 }
 
-.slide{
+.slide {
     background-size: cover;
     background-repeat: no-repeat;
     background-position: 50% 50%;
 }
 
-#alirserver:hover{
+#alirserver:hover {
     cursor: pointer;
     border-color: #007BFF;
-    box-shadow: 0 2px 1px rgba(0,123,255,0.7);
+    box-shadow: 0 2px 1px rgba(0, 123, 255, 0.7);
 }
 
-#tsserver:hover{
+#tsserver:hover {
     cursor: not-allowed;
 }
 
 /* MOBILE RESPONSIVE
 -------------------------------------------------- */
 
-@media screen and (max-width: 1100px){
-
-    #alirCarousel{
+@media screen and (max-width: 1100px) {
+    #alirCarousel {
         display: none;
     }
-
-    .pagec{
-       margin-top: 4px;
+    .pagec {
+        margin-top: 4px;
     }
-
-    main{
+    main {
         margin-top: 1em;
     }
-
-    .hideonphone{
+    .hideonphone {
         display: none;
     }
-
 }
