@@ -173,13 +173,27 @@ a {
 
 .card {
     margin-top: 10px;
-    padding-right: 12px;
     padding-bottom: 7px;
-    padding-left: 11px;
     border-radius: 0 !important;
     opacity: 1;
-    border: 1px solid #000;
-    background-color: hsla(0, 0%, 100%, .08);
+    background-color: #353535;
+}
+
+.card-news{
+    padding: 1px;
+    text-align: center;
+    vertical-align: middle;
+}
+
+#alirCarousel{
+    border-radius: 0 !important;
+    border: 1px solid #383838;
+    opacity: 1;
+    background-color: #353535;
+}
+
+.card-header{
+    background: #333333;
 }
 
 .card-gaming {
