@@ -168,6 +168,11 @@ a {
     filter: alpha(opacity=30);
 }
 
+a.text-muted:hover{
+    text-decoration: none;
+    color: #ffffff !important;
+}
+
 .button-arma:hover {
     background-color: hsla(0, 0%, 100%, .08);
     box-shadow: 0 0 6px -1px #000;
@@ -275,14 +280,14 @@ hr {
     border-radius: 0 !important;
 }
 
-.text-muted:hover {
-    color: #ffffff;
-}
-
 .modal-content {
     border-color: #2b2b2f;
     background-color: #2d3035;
     color: #ffffff;
+}
+
+a.text-muted{
+    color: #b5babe !important;
 }
 
 .list-group-item {
