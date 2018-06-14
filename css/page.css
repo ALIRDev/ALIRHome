@@ -313,6 +313,10 @@ a.social-youtube{
     color: #ff0000;
 }
 
+a.social-twitch{
+    color: #6441a5;
+}
+
 a.social-link:hover{
     color: #ffffff;
     text-decoration: none;
