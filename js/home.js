@@ -56,6 +56,8 @@ function appendHeading(data) {
         var content = data[i].firstPost.content;
         var firstDate = data[i].firstPost.date;
 
+        // https://www.alir.eu/rss/3-annunci.xml/?member_id=3634&key=01f5ac2969949545e480ece0ac98ba12
+
         console.log(tags);
 
         var date = moment(firstDate).fromNow();
@@ -99,6 +101,8 @@ function appendArticles(data) {
         var firstDate = data[i].firstPost.date;
 
         var date = moment(firstDate).fromNow();
+
+        // https://www.alir.eu/rss/1-rss-discussioni.xml/?member_id=3634&key=01f5ac2969949545e480ece0ac98ba12
 
         var element = "<div class='col-md-6 hvr-grow' style='overflow: hidden;'>" +
             "<div class='card flex-md-row mb-4 box-shadow h-md-250' style='overflow: hidden;'> " +
