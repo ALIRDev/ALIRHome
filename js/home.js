@@ -7,7 +7,7 @@ function generateNews() {
     var serverKey = "10f9dfa58c23a1ab511fc2478672ebef";
 
     $.ajax({
-        url: "https://cors-anywhere.herokuapp.com/https://alir.eu/api/forums/topics?key=" + serverKey + "&forums=75,40,116,153&sortDir=desc&hidden=0",
+        url: "https://cors-anywhere.herokuapp.com/https://alir.eu/api/forums/topics?key=" + serverKey + "&forums=40,116,153,39,11,84,129&sortDir=desc&hidden=0",
         type: 'GET',
         dataType: "json",
         timeout: 5000
@@ -50,10 +50,13 @@ function appendHeading(data) {
         var topicTitle = data[i].title;
         var topicUrl = data[i].url;
         var views = data[i].views;
+        var tags = data[i].tags[0];
         var author = data[i].firstPost.author.name;
         var authorProfileUrl = data[i].firstPost.author.profileUrl;
         var content = data[i].firstPost.content;
         var firstDate = data[i].firstPost.date;
+
+        console.log(tags);
 
         var date = moment(firstDate).fromNow();
 
@@ -107,7 +110,25 @@ function appendArticles(data) {
             "</div>" +
             "</div>";  
 
-        $('#appendResultHere').append(element);
+
+
+        var element = "<div class='col-sm-12'>"+
+        "<div class='card'>"+
+                "<div class='card-header'>"+
+                    "<h5>" + topicTitle + "</h5>"+
+                "</div>"+
+                "<div class='card-body'>"+
+                    "<p class='card-text'> " + content + "</p>"+
+                    "<p class='card-text'>"+
+                        "<small class='text-muted'>Scritto " + date + " da <a title='Visualizza il profilo utente' href='" + authorProfileUrl + "'>" + author + "</a></small>"+
+                    "</p>"
+                    "<a href='#' class='card-link'><i title='Visualizzazioni' class='fas fa-eye'></i> " + views + " <i title='Risposte' class='fas fa-comments '></i> " + post + "</a>"+
+                    "<a href='#' class='card-link'>Another link</a>"+
+                "</div>"+
+            "</div>"+
+        "</div>";    
+
+        $('#recentContent').append(element);
 
         // Parse context to string
         //var contentToText = content.replace(/<[^>]*>/g, '');
