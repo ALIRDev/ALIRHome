@@ -6,6 +6,7 @@
 
 .font-krona {
     font-family: 'Krona One', sans-serif;
+    text-transform: uppercase;
 }
 
 .font-indie {
@@ -180,9 +181,15 @@ a {
 }
 
 .card-news{
-    padding: 1px;
+    margin-top: 10px;
+    border-radius: 0 !important;
+    opacity: 1;
+    background-color: rgba(0, 0, 0, .35);
     text-align: center;
-    vertical-align: middle;
+}
+
+p.card{
+    background-color: rgba(0, 0, 0, .35);
 }
 
 #alirCarousel{
@@ -190,7 +197,7 @@ a {
     border: 1px solid #383838;
     opacity: 1;
     background-color: #353535;
-}
+}    
 
 .card-header{
     background: #333333;
@@ -205,6 +212,11 @@ a {
     position: relative;
     display: block;
     padding-bottom: 5px;
+}
+
+.news-img{
+    opacity: 0.3;
+    filter: alpha(opacity=60);
 }
 
 .card-img-top:hover{
