@@ -1,17 +1,5 @@
 console.log("Avvio ALIRHome, utilizzare la console solo per scopi di sviluppo, non trasmettere i propri dati personali o bancari!");
 
-// Abilito i tooltip ovunque
-$(function () {
-    $('[data-toggle="tooltip"]').tooltip();
-});
-// scroll body to 0px on click
-$('#backtop').click(function () {
-    $('body,html').animate({
-        scrollTop: 0
-    }, 800);
-    return false;
-});
-
 moment.locale('it');
 
 function generateNews() {
@@ -26,7 +14,7 @@ function generateNews() {
     }).done(function (data) {
 
         var result = data.results;
-        var cutData = result.slice(0, 14);
+        var cutData = result.slice(0, 5);
         appendArticles(cutData);
 
     });
@@ -45,7 +33,7 @@ function requestStaffNews() {
     }).done(function (data) {
 
         var result = data.results;
-        var headingData = result.slice(0, 3);
+        var headingData = result.slice(0, 4);
         var slideData = result.slice(0,1);
 
         console.log(slideData);
@@ -69,14 +57,23 @@ function appendHeading(data) {
 
         var date = moment(firstDate).fromNow();
 
-        var element2 = "<div class='col-md-4 hvr-grow'> " +
-            "<div class='card' style='min-height: 150px; max-height: 150px;'> " +
-            "<div class='card-body'> " +
-            "<h5 class='card-title worksans' style='min-height: 60px'><a href='" + topicUrl + "'>" + topicTitle + "</a></h5> " +
-            "<div class='card-footer' style='text-align: center'><p class='card-text'><small class='text-muted'><i class='fas fa-eye' title='Visualizzazioni'></i> " + views + " - <i class='fas fa-user' title='Autore'></i> " + author + " - <i class='fas fa-clock' title='Scritto'></i> " + date + "</small></p></div>" +
-            "</div> </div> </div>";
+        var element2 = "<div class='col-md-6'>"+
+        "<div class='card-news bg-dark text-white'>"+
+            "<a class='text-muted' href='" + topicUrl + "'>"+
+            "<img class='card-img news-img' src='https://pacificgl.com/images/arma3_2.jpg' alt='Card image'>"+
+            "<div class='card-img-overlay'>"+
+                "<p class='card-title font-krona'>" + topicTitle + "</p>"+
+                "<p class='card-text' style='padding-bottom: 4px;'></p>"+
+                "<p class='card-text'>"+
+                    "<small class='text-muted'><i class='fas fa-eye' title='Visualizzazioni'></i> " + views + " - <i class='fas fa-user' title='Autore'></i> " + author + " - <i class='fas fa-clock' title='Scritto'></i> " + date + "</small>"+
+                "</p>"+
+            "</div>"+
+            "</a>"+
+        "</div>"+
+        "</div>";
 
-        $('#appendHeadingTopic').append(element2);
+
+        $('#latest-news').append(element2);
 
     }
 
@@ -109,7 +106,7 @@ function appendArticles(data) {
             "<div class='mb-1 text-muted'>Scritto " + date + " da <a title='Visualizza il profilo utente' href='" + authorProfileUrl + "'>" + author + "</a></div> " +
             "<div class='mb-1'><i title='Visualizzazioni' class='fas fa-eye'></i> " + views + " <i title='Risposte' class='fas fa-comments '></i> " + post + " </div></div> " +
             "</div>" +
-            "</div>";
+            "</div>";  
 
         $('#appendResultHere').append(element);
 
