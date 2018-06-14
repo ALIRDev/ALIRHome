@@ -395,6 +395,12 @@ hr {
     #alirCarousel {
         display: none;
     }
+    .welcome{
+        display: none;
+    }
+    body{
+        padding-top: 3.7rem !important;
+    }
     .pagec {
         margin-top: 4px;
     }
