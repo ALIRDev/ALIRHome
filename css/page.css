@@ -193,6 +193,7 @@ a.text-muted:hover {
 .card-news {
     margin-top: 10px;
     border-radius: 0 !important;
+    color: white;
     opacity: 1;
     background-color: rgba(0, 0, 0, .35);
     text-align: center;
@@ -227,6 +228,9 @@ p.card {
 .news-img {
     opacity: 0.3;
     filter: alpha(opacity=60);
+    position: relative;
+    text-align: center;
+    color: white;
 }
 
 .card-img-top:hover {
@@ -290,6 +294,25 @@ a {
     color: #ffffff;
 }
 
+/* Centered text */
+
+.centered {
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.card-footer {
+    padding: 2px !important;
+    background-color: #ffffff;
+    border-top: 1px solid rgba(0, 0, 0, .125);
+}
+
+small.textgray{
+    color: #516575 !important;
+}
+
 a.text-muted {
     color: #b5babe !important;
 }
@@ -298,6 +321,10 @@ a.text-muted {
     border-color: #2b2b2f;
     background-color: #2d3035;
     color: #ffffff;
+}
+
+small.text-muted {
+    color: #b5babe !important;
 }
 
 /* SOCIAL ICON

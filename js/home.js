@@ -62,11 +62,10 @@ function appendHeading(data) {
             "<a class='text-muted' href='" + topicUrl + "'>"+
             "<img class='card-img news-img' src='https://pacificgl.com/images/arma3_2.jpg' alt='Card image'>"+
             "<div class='card-img-overlay'>"+
-                "<p class='card-title font-krona'>" + topicTitle + "</p>"+
-                "<p class='card-text' style='padding-bottom: 4px;'></p>"+
-                "<p class='card-text'>"+
-                    "<small class='text-muted'><i class='fas fa-eye' title='Visualizzazioni'></i> " + views + " - <i class='fas fa-user' title='Autore'></i> " + author + " - <i class='fas fa-clock' title='Scritto'></i> " + date + "</small>"+
-                "</p>"+
+                "<p class='card-title font-krona centered'>" + topicTitle + "</p>"+
+            "</div>"+
+            "<div class='card-footer text-muted'>"+
+                    "<small class='text-muted textgray'><i class='fas fa-eye' title='Visualizzazioni'></i> " + views + " - <i class='fas fa-user' title='Autore'></i> " + author + " - <i class='fas fa-clock' title='Scritto'></i> " + date + "</small>"+ 
             "</div>"+
             "</a>"+
         "</div>"+
