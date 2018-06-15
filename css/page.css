@@ -1,5 +1,4 @@
 @import url('https://fonts.googleapis.com/css?family=Exo');
-@import url('https://fonts.googleapis.com/css?family=Indie+Flower');
 @import url('https://fonts.googleapis.com/css?family=Krona+One');
 /* GLOBAL STYLES
 -------------------------------------------------- */
@@ -7,10 +6,6 @@
 .font-krona {
     font-family: 'Krona One', sans-serif;
     text-transform: uppercase;
-}
-
-.font-indie {
-    font-family: 'Indie Flower', cursive;
 }
 
 footer {
