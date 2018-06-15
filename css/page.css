@@ -1,5 +1,6 @@
 @import url('https://fonts.googleapis.com/css?family=Exo');
 @import url('https://fonts.googleapis.com/css?family=Krona+One');
+
 /* GLOBAL STYLES
 -------------------------------------------------- */
 
@@ -385,6 +386,11 @@ a.social-link:hover {
     .welcome {
         display: none;
     }
+
+    .mobilepadder{
+        padding-top: 6% !important;
+    }
+
     body {
         padding-top: 3.7rem !important;
     }
