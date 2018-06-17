@@ -2,6 +2,33 @@ console.log("Avvio ALIRHome, utilizzare la console solo per scopi di sviluppo, n
 
 moment.locale('it');
 
+$.fn.extend({
+    animateCss: function(animationName, callback) {
+      var animationEnd = (function(el) {
+        var animations = {
+          animation: 'animationend',
+          OAnimation: 'oAnimationEnd',
+          MozAnimation: 'mozAnimationEnd',
+          WebkitAnimation: 'webkitAnimationEnd',
+        };
+  
+        for (var t in animations) {
+          if (el.style[t] !== undefined) {
+            return animations[t];
+          }
+        }
+      })(document.createElement('div'));
+  
+      this.addClass('animated ' + animationName).one(animationEnd, function() {
+        $(this).removeClass('animated ' + animationName);
+  
+        if (typeof callback === 'function') callback();
+      });
+  
+      return this;
+    },
+  });
+
 function generateNews() {
 
     var serverKey = "10f9dfa58c23a1ab511fc2478672ebef";
@@ -35,9 +62,9 @@ function requestStaffNews() {
         var result = data.results;
         var headingData = result.slice(0, 4);
         var slideData = result.slice(0,1);
-
-        console.log(slideData);
         appendHeading(headingData);
+        $('#emptystaffnews').animateCss('bounceOut').hide().attr('hidden', true);
+        $('#latest-news').show(400).removeAttr('hidden').animateCss('bounceIn');
 
     });
 
@@ -55,34 +82,22 @@ function appendHeading(data) {
         var authorProfileUrl = data[i].firstPost.author.profileUrl;
         var content = data[i].firstPost.content;
         var firstDate = data[i].firstPost.date;
-
-        // https://www.alir.eu/rss/3-annunci.xml/?member_id=3634&key=01f5ac2969949545e480ece0ac98ba12
-
-        console.log(tags);
-
         var date = moment(firstDate).fromNow();
+        var $cardTitle = $('#card'+ i +'title');
+        var $cardInfo = $('#card'+ i +'info');
+        var $cardSelector = $('#card'+ i +'select');
 
-        var element2 = "<div class='col-md-6'>"+
-        "<div class='card-news bg-dark text-white'>"+
-            "<a class='text-muted' href='" + topicUrl + "'>"+
-            "<img class='card-img news-img' src='https://pacificgl.com/images/arma3_2.jpg' alt='Card image'>"+
-            "<div class='card-img-overlay'>"+
-                "<p class='card-title font-krona centered'>" + topicTitle + "</p>"+
-            "</div>"+
-            "<div class='card-footer text-muted'>"+
-                    "<small class='text-muted textgray'><i class='fas fa-eye' title='Visualizzazioni'></i> " + views + " - <i class='fas fa-user' title='Autore'></i> " + author + " - <i class='fas fa-clock' title='Scritto'></i> " + date + "</small>"+ 
-            "</div>"+
-            "</a>"+
-        "</div>"+
-        "</div>";
+        // FEED RSS ANNUNCI STAFF
+        // https://www.alir.eu/rss/3-annunci.xml/?member_id=3634&key=01f5ac2969949545e480ece0ac98ba12
+        
+        $cardTitle.html(topicTitle).attr('href', topicUrl).attr('title', 'Clicca per leggere la notizia');
+        $cardInfo.html("<small class='text-muted textgray'><i class='fas fa-eye' title='Visualizzazioni'></i> " + views + " - <i class='fas fa-user' title='Autore'></i> " + author + " - <i class='fas fa-clock' title='Scritto'></i> " + date + "</small>");
 
-
-        $('#latest-news').append(element2);
+        $cardSelector.animateCss('flipInY');
 
     }
 
-    $('#loadedArea').removeAttr('hidden');
-    console.log("Import annunci completato!");
+    console.log('appendHeading function completed. All data successiful imported from alir.eu')
 
 }
 
@@ -146,7 +161,7 @@ function appendArticles(data) {
 }
 
 $(document).ready(function () {
-    console.log("Avvio import dati");
+    console.log("Starting appendHeading and appendArticles functions. Import in progress... please wait!");
 
     setTimeout(function(){
         generateNews();
