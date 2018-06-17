@@ -76,23 +76,22 @@ function appendHeading(data) {
 
         var topicTitle = data[i].title;
         var topicUrl = data[i].url;
-        var views = data[i].views;
         var tags = data[i].tags[0];
         var author = data[i].firstPost.author.name;
-        var authorProfileUrl = data[i].firstPost.author.profileUrl;
-        var content = data[i].firstPost.content;
         var firstDate = data[i].firstPost.date;
         var date = moment(firstDate).fromNow();
         var $cardTitle = $('#card'+ i +'title');
         var $cardInfo = $('#card'+ i +'info');
         var $cardSelector = $('#card'+ i +'select');
+        var $cardImage = $('#card'+ i +'image');
+        var armaImage = "https://pacificgl.com/images/arma3_2.jpg";
 
         // FEED RSS ANNUNCI STAFF
         // https://www.alir.eu/rss/3-annunci.xml/?member_id=3634&key=01f5ac2969949545e480ece0ac98ba12
         
         $cardTitle.html(topicTitle).attr('href', topicUrl).attr('title', 'Clicca per leggere la notizia');
-        $cardInfo.html("<small class='text-muted textgray'><i class='fas fa-eye' title='Visualizzazioni'></i> " + views + " - <i class='fas fa-user' title='Autore'></i> " + author + " - <i class='fas fa-clock' title='Scritto'></i> " + date + "</small>");
-
+        $cardInfo.html("<small class='text-muted textgray'><i class='fas fa-user' title='Autore'></i> " + author + " - <i class='fas fa-clock' title='Scritto'></i> " + date + "</small>");
+        $cardImage.attr('src', armaImage);
         $cardSelector.animateCss('flipInY');
 
     }
