@@ -110,10 +110,6 @@ a {
     color: #0056b3 !important;
 }
 
-.card-footer {
-    color: #5f5f64 !important;
-}
-
 /* RESPONSIVE CSS
 -------------------------------------------------- */
 
@@ -140,7 +136,7 @@ a {
 }
 
 .card-deck .card {
-    min-width: 220px;
+    min-width: 200px;
 }
 
 .fas {
@@ -180,7 +176,6 @@ a.text-muted:hover {
 
 .card {
     margin-top: 10px;
-    padding-bottom: 7px;
     border-radius: 0 !important;
     opacity: 1;
     background-color: #353535;
@@ -213,6 +208,10 @@ p.card {
 .card-gaming {
     border-radius: 0 !important;
     opacity: 1;
+}
+
+.mincard{
+    min-height: 200px;
 }
 
 .list-community {
@@ -301,7 +300,9 @@ a {
 
 .card-footer {
     padding: 2px !important;
-    background-color: #ffffff;
+    background-color: #5f5f64 !important;
+    color: white !important;
+    text-align: center;
     border-top: 1px solid rgba(0, 0, 0, .125);
 }
 

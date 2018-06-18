@@ -69,7 +69,7 @@ function generateNews() {
     }).done(function (data) {
 
         var result = data.results;
-        var cutData = result.slice(0, 5);
+        var cutData = result.slice(0, 6);
         appendArticles(cutData);
 
 
@@ -149,15 +149,16 @@ function appendArticles(data) {
         var $cardTitle = $('#card'+ i +'newstitle');
         var $cardSubTitle = $('#card' + i + 'newssub');
         var $cardContentText = $('#card'+ i +'newstext');
-        var $cardLink = $('#card'+ i +'buttonleft');
         var $cardTime = $('#card'+ i +'newstimer');
         var contentToText = content.replace(/<[^>]*>/g, '');
         var contentParsed = contentToText.substring(0,200);
+        var linkElement = "<a class='pull-right'><i class='fa fa-external-link'></i></a>";
+        
+        linkElement.href(topicUrl);
 
-        $cardTitle.html(topicTitle);
-        $cardSubTitle.html("<small class='text-muted'><a href='" + forumUrl + "'> " + forum + " </a></small>");
-        $cardContentText.html(contentParsed + " ...");
-        $cardLink.html('Continua a leggere').attr('href', topicUrl);
+        $cardTitle.html(topicTitle + linkElement);
+        $cardSubTitle.html("");
+        $cardContentText.html("<p class='card-text'>" + contentParsed + " ...</p>").attr('hidden', false).animateCss('flipInY');
         $cardTime.html("<div class='mb-1  text-muted'><i title='Risposte' class='fas fa-comments '></i> " + post + " Scritto " + date + " da <a title='Visualizza il profilo utente' href='" + authorProfileUrl + "'>" + author + "</a></div></div> ");
         $cardSelector.animateCss('flipInY');
 
