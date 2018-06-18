@@ -156,7 +156,7 @@ function appendArticles(data) {
 
         $cardTitle.html(topicTitle);
         $cardSubTitle.html("<small class='text-muted'><a href='" + forumUrl + "'> " + forum + " </a></small>");
-        $cardContentText.html(contentParsed);
+        $cardContentText.html(contentParsed + " ...");
         $cardLink.html('Continua a leggere').attr('href', topicUrl);
         $cardTime.html("<div class='mb-1  text-muted'><i title='Risposte' class='fas fa-comments '></i> " + post + " Scritto " + date + " da <a title='Visualizza il profilo utente' href='" + authorProfileUrl + "'>" + author + "</a></div></div> ");
         $cardSelector.animateCss('flipInY');
