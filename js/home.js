@@ -90,7 +90,6 @@ function requestStaffNews() {
 
         var result = data.results;
         var headingData = result.slice(0, 4);
-        var slideData = result.slice(0,1);
         appendHeading(headingData);
 
     });
@@ -146,6 +145,7 @@ function appendArticles(data) {
         // FEED RSS POST GLOBALI
         // https://www.alir.eu/rss/1-rss-discussioni.xml/?member_id=3634&key=01f5ac2969949545e480ece0ac98ba12
 
+        var $cardSelector = $('#card' + i + 'selected');
         var $cardTitle = $('#card'+ i +'newstitle');
         var $cardSubTitle = $('#card' + i + 'newssub');
         var $cardContentText = $('#card'+ i +'newstext');
@@ -154,40 +154,17 @@ function appendArticles(data) {
         var contentToText = content.replace(/<[^>]*>/g, '');
         var contentParsed = contentToText.substring(0,200);
 
-        var element = "<div class='col-md-6 hvr-grow' style='overflow: hidden;'>" +
-            "<div class='card flex-md-row mb-4 box-shadow h-md-250' style='overflow: hidden;'> " +
-            "<div class='card-body d-flex flex-column align-items-start' style='overflow: hidden;'> " +
-            "<strong class='d-inline-block mb-2 text-primary' style='font-size: small'>" + forum + "</strong> " +
-            "<h3 style='font-size: x-large; white-space: nowrap; overflow: hidden; width: 370px; text-overflow: ellipsis;' class='mb-0' title='Continua a leggere...'> <a href='" + topicUrl + "' class='wstitle'>" + topicTitle + "</a></h3> " +
-            "<div class='mb-1 text-muted'>Scritto " + date + " da <a title='Visualizza il profilo utente' href='" + authorProfileUrl + "'>" + author + "</a></div> " +
-            "<div class='mb-1'><i title='Visualizzazioni' class='fas fa-eye'></i> " + views + " <i title='Risposte' class='fas fa-comments '></i> " + post + " </div></div> " +
-            "</div>" +
-            "</div>";  
-
-
-
-        var element = "<div class='col-sm-12'>"+
-        "<div class='card'>"+
-                "<div class='card-header'>"+
-                    "<h5>" + topicTitle + "</h5>"+
-                "</div>"+
-                "<div class='card-body'>"+
-                    "<p class='card-text'> " + content + "</p>"+
-                    "<p class='card-text'>"+
-                        "<small class='text-muted'>Scritto " + date + " da <a title='Visualizza il profilo utente' href='" + authorProfileUrl + "'>" + author + "</a></small>"+
-                    "</p>"
-                    "<a href='#' class='card-link'><i title='Visualizzazioni' class='fas fa-eye'></i> " + views + " <i title='Risposte' class='fas fa-comments '></i> " + post + "</a>"+
-                    "<a href='#' class='card-link'>Another link</a>"+
-                "</div>"+
-            "</div>"+
-        "</div>";    
-
-        $('#recentContent').append(contentParsed);
+        $cardTitle.html(topicTitle);
+        $cardSubTitle.html("<small class='text-muted'><a href='" + forumUrl + "'> " + forum + " </a></small>");
+        $cardContentText.html(contentParsed);
+        $cardLink.html('Continua a leggere').attr('href', topicUrl);
+        $cardTime.html("<div class='mb-1  text-muted'><i title='Risposte' class='fas fa-comments '></i> " + post + " Scritto " + date + " da <a title='Visualizza il profilo utente' href='" + authorProfileUrl + "'>" + author + "</a></div></div> ");
+        $cardSelector.animateCss('flipInY');
 
     }
 
     $('#loadPost').attr('hidden',true);
-    console.log("Import post completato!");
+    console.log("appendArticles function completed. All data successiful imported from alir.eu");
 
 }
 
