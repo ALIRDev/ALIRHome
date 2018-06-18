@@ -72,6 +72,7 @@ function generateNews() {
         var cutData = result.slice(0, 5);
         appendArticles(cutData);
 
+
     });
 
 }
@@ -91,8 +92,6 @@ function requestStaffNews() {
         var headingData = result.slice(0, 4);
         var slideData = result.slice(0,1);
         appendHeading(headingData);
-        $('#emptystaffnews').animateCss('bounceOut').hide().attr('hidden', true);
-        $('#latest-news').show(400).removeAttr('hidden').animateCss('bounceIn');
 
     });
 
@@ -133,6 +132,7 @@ function appendArticles(data) {
     for (var i = 0; i < data.length; i++) {
 
         var forum = data[i].forum.name;
+        var forumUrl = data[i].forum.url;
         var topicTitle = data[i].title;
         var post = data[i].posts;
         var topicUrl = data[i].url;
@@ -141,10 +141,18 @@ function appendArticles(data) {
         var authorProfileUrl = data[i].firstPost.author.profileUrl;
         var content = data[i].firstPost.content;
         var firstDate = data[i].firstPost.date;
-
         var date = moment(firstDate).fromNow();
 
+        // FEED RSS POST GLOBALI
         // https://www.alir.eu/rss/1-rss-discussioni.xml/?member_id=3634&key=01f5ac2969949545e480ece0ac98ba12
+
+        var $cardTitle = $('#card'+ i +'newstitle');
+        var $cardSubTitle = $('#card' + i + 'newssub');
+        var $cardContentText = $('#card'+ i +'newstext');
+        var $cardLink = $('#card'+ i +'buttonleft');
+        var $cardTime = $('#card'+ i +'newstimer');
+        var contentToText = content.replace(/<[^>]*>/g, '');
+        var contentParsed = contentToText.substring(0,200);
 
         var element = "<div class='col-md-6 hvr-grow' style='overflow: hidden;'>" +
             "<div class='card flex-md-row mb-4 box-shadow h-md-250' style='overflow: hidden;'> " +
@@ -174,11 +182,7 @@ function appendArticles(data) {
             "</div>"+
         "</div>";    
 
-        $('#recentContent').append(element);
-
-        // Parse context to string
-        //var contentToText = content.replace(/<[^>]*>/g, '');
-        //var contentParsed = contentToText.substring(0,200);
+        $('#recentContent').append(contentParsed);
 
     }
 
