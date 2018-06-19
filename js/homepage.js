@@ -28,6 +28,11 @@
 
 console.log("Avvio ALIRHome, utilizzare la console solo per scopi di sviluppo, non trasmettere i propri dati personali o bancari!");
 
+// auth
+var requestUser = "alirgoggles";
+var requestPass = "apritisesamo";
+var authLogin = "Basic " + btoa(requestUser + ":" + requestPass);
+
 moment.locale('it');
 
 $.fn.extend({
@@ -59,16 +64,19 @@ $.fn.extend({
 
 function generateNews() {
 
-    var serverKey = "10f9dfa58c23a1ab511fc2478672ebef";
-
     $.ajax({
-        url: "https://cors-anywhere.herokuapp.com/https://alir.eu/api/forums/topics?key=" + serverKey + "&forums=40,116,153,39,11,84,129&sortDir=desc&hidden=0",
+        url: "https://cors-anywhere.herokuapp.com/http://37.59.102.107:8190/rssFeed/discussioni",
         type: 'GET',
         dataType: "json",
-        timeout: 5000
+        timeout: 5000,
+        beforeSend: function (xhr) {
+            xhr.setRequestHeader ("Authorization", authLogin);
+        }
     }).done(function (data) {
 
-        var result = data.results;
+        console.log(data);
+
+        var result = data.items;
         var cutData = result.slice(0, 6);
         appendArticles(cutData);
 
@@ -79,16 +87,19 @@ function generateNews() {
 
 function requestStaffNews() {
 
-    var serverKey = "10f9dfa58c23a1ab511fc2478672ebef";
-
     $.ajax({
-        url: "https://cors-anywhere.herokuapp.com/https://alir.eu/api/forums/topics?key=" + serverKey + "&forums=112&sortDir=desc&hidden=0",
+        url: "https://cors-anywhere.herokuapp.com/http://37.59.102.107:8190/rssFeed/annunci",
         type: 'GET',
         dataType: "json",
-        timeout: 5000
+        timeout: 5000,
+        beforeSend: function (xhr) {
+            xhr.setRequestHeader ("Authorization", authLogin);
+        }
     }).done(function (data) {
 
-        var result = data.results;
+        console.log(data);
+
+        var result = data.items;
         var headingData = result.slice(0, 4);
         appendHeading(headingData);
 
