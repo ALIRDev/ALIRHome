@@ -36,31 +36,31 @@ var authLogin = "Basic " + btoa(requestUser + ":" + requestPass);
 moment.locale('it');
 
 $.fn.extend({
-    animateCss: function(animationName, callback) {
-      var animationEnd = (function(el) {
-        var animations = {
-          animation: 'animationend',
-          OAnimation: 'oAnimationEnd',
-          MozAnimation: 'mozAnimationEnd',
-          WebkitAnimation: 'webkitAnimationEnd',
-        };
-  
-        for (var t in animations) {
-          if (el.style[t] !== undefined) {
-            return animations[t];
-          }
-        }
-      })(document.createElement('div'));
-  
-      this.addClass('animated ' + animationName).one(animationEnd, function() {
-        $(this).removeClass('animated ' + animationName);
-  
-        if (typeof callback === 'function') callback();
-      });
-  
-      return this;
+    animateCss: function (animationName, callback) {
+        var animationEnd = (function (el) {
+            var animations = {
+                animation: 'animationend',
+                OAnimation: 'oAnimationEnd',
+                MozAnimation: 'mozAnimationEnd',
+                WebkitAnimation: 'webkitAnimationEnd',
+            };
+
+            for (var t in animations) {
+                if (el.style[t] !== undefined) {
+                    return animations[t];
+                }
+            }
+        })(document.createElement('div'));
+
+        this.addClass('animated ' + animationName).one(animationEnd, function () {
+            $(this).removeClass('animated ' + animationName);
+
+            if (typeof callback === 'function') callback();
+        });
+
+        return this;
     },
-  });
+});
 
 function generateNews() {
 
@@ -70,13 +70,12 @@ function generateNews() {
         dataType: "json",
         timeout: 5000,
         beforeSend: function (xhr) {
-            xhr.setRequestHeader ("Authorization", authLogin);
+            xhr.setRequestHeader("Authorization", authLogin);
         }
     }).done(function (data) {
 
         var result = data.items;
         appendArticles(result);
-
 
     });
 
@@ -90,7 +89,7 @@ function requestStaffNews() {
         dataType: "json",
         timeout: 5000,
         beforeSend: function (xhr) {
-            xhr.setRequestHeader ("Authorization", authLogin);
+            xhr.setRequestHeader("Authorization", authLogin);
         }
     }).done(function (data) {
 
@@ -110,13 +109,10 @@ function appendHeading(data) {
         var firstDate = data[i].created;
         var date = moment(firstDate).fromNow();
 
-        // FEED RSS ANNUNCI STAFF
-        // https://www.alir.eu/rss/3-annunci.xml/?member_id=3634&key=01f5ac2969949545e480ece0ac98ba12
-
-        var $cardTitle = $('#card'+ i +'title');
-        var $cardInfo = $('#card'+ i +'info');
-        var $cardSelector = $('#card'+ i +'select');
-        var $cardImage = $('#card'+ i +'image');
+        var $cardTitle = $('#card' + i + 'title');
+        var $cardInfo = $('#card' + i + 'info');
+        var $cardSelector = $('#card' + i + 'select');
+        var $cardImage = $('#card' + i + 'image');
         var armaImage = "https://pacificgl.com/images/arma3_2.jpg";
 
         $cardTitle.html(topicTitle).attr('href', topicUrl).attr('title', 'Clicca per leggere la notizia');
@@ -125,8 +121,6 @@ function appendHeading(data) {
         $cardSelector.animateCss('flipInY');
 
     }
-
-    console.log('appendHeading function completed. All data successiful imported from alir.eu')
 
 }
 
@@ -137,17 +131,19 @@ function appendArticles(data) {
         var topicTitle = data[i].title;
         var topicUrl = data[i].url;
         var firstDate = data[i].created;
-        var content = data[i].description
+        var content = data[i].description;
+        var contentLenght = content.length;
         var date = moment(firstDate).fromNow();
 
-        // FEED RSS POST GLOBALI
-        // https://www.alir.eu/rss/1-rss-discussioni.xml/?member_id=3634&key=01f5ac2969949545e480ece0ac98ba12
+        if(contentLenght >= 201){
+            content = content.substring(0,200) + "... ";
+        }
 
         var $cardSelector = $('#card' + i + 'selected');
-        var $cardTitle = $('#card'+ i +'newstitle');
+        var $cardTitle = $('#card' + i + 'newstitle');
         var $cardSubTitle = $('#card' + i + 'newssub');
-        var $cardContentText = $('#card'+ i +'newstext');
-        var $cardTime = $('#card'+ i +'newstimer');
+        var $cardContentText = $('#card' + i + 'newstext');
+        var $cardTime = $('#card' + i + 'newstimer');
         var linkElement = "<a class='pull-right' href='" + topicUrl + "'>" + topicTitle + "</a>";
 
         $cardTitle.html(linkElement);
@@ -158,17 +154,15 @@ function appendArticles(data) {
 
     }
 
-    $('#loadPost').attr('hidden',true);
-    console.log("appendArticles function completed. All data successiful imported from alir.eu");
+    $('#loadPost').attr('hidden', true);
 
 }
 
 $(document).ready(function () {
-    console.log("Starting appendHeading and appendArticles functions. Import in progress... please wait!");
 
-    setTimeout(function(){
+    setTimeout(function () {
         generateNews();
         requestStaffNews();
-    },10000);
+    }, 10000);
 
 });
