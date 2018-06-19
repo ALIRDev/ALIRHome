@@ -65,7 +65,7 @@ $.fn.extend({
 function generateNews() {
 
     $.ajax({
-        url: "https://cors-anywhere.herokuapp.com/http://37.59.102.107:8190/rssFeed/discussioni",
+        url: "http://37.59.102.107:8190/rssFeed/discussioni",
         type: 'GET',
         dataType: "json",
         timeout: 5000,
@@ -74,11 +74,8 @@ function generateNews() {
         }
     }).done(function (data) {
 
-        console.log(data);
-
         var result = data.items;
-        var cutData = result.slice(0, 6);
-        appendArticles(cutData);
+        appendArticles(result);
 
 
     });
@@ -88,7 +85,7 @@ function generateNews() {
 function requestStaffNews() {
 
     $.ajax({
-        url: "https://cors-anywhere.herokuapp.com/http://37.59.102.107:8190/rssFeed/annunci",
+        url: "http://37.59.102.107:8190/rssFeed/annunci",
         type: 'GET',
         dataType: "json",
         timeout: 5000,
@@ -97,11 +94,8 @@ function requestStaffNews() {
         }
     }).done(function (data) {
 
-        console.log(data);
-
         var result = data.items;
-        var headingData = result.slice(0, 4);
-        appendHeading(headingData);
+        appendHeading(result);
 
     });
 
@@ -113,21 +107,20 @@ function appendHeading(data) {
 
         var topicTitle = data[i].title;
         var topicUrl = data[i].url;
-        var tags = data[i].tags[0];
-        var author = data[i].firstPost.author.name;
-        var firstDate = data[i].firstPost.date;
+        var firstDate = data[i].created;
         var date = moment(firstDate).fromNow();
+
+        // FEED RSS ANNUNCI STAFF
+        // https://www.alir.eu/rss/3-annunci.xml/?member_id=3634&key=01f5ac2969949545e480ece0ac98ba12
+
         var $cardTitle = $('#card'+ i +'title');
         var $cardInfo = $('#card'+ i +'info');
         var $cardSelector = $('#card'+ i +'select');
         var $cardImage = $('#card'+ i +'image');
         var armaImage = "https://pacificgl.com/images/arma3_2.jpg";
 
-        // FEED RSS ANNUNCI STAFF
-        // https://www.alir.eu/rss/3-annunci.xml/?member_id=3634&key=01f5ac2969949545e480ece0ac98ba12
-        
         $cardTitle.html(topicTitle).attr('href', topicUrl).attr('title', 'Clicca per leggere la notizia');
-        $cardInfo.html("<small class='text-muted textgray'><i class='fas fa-user' title='Autore'></i> " + author + " - <i class='fas fa-clock' title='Scritto'></i> " + date + "</small>");
+        $cardInfo.html("<small class='text-muted textgray'><i class='fas fa-clock' title='Scritto'></i> " + date + "</small>");
         $cardImage.attr('src', armaImage);
         $cardSelector.animateCss('flipInY');
 
@@ -141,16 +134,9 @@ function appendArticles(data) {
 
     for (var i = 0; i < data.length; i++) {
 
-        var forum = data[i].forum.name;
-        var forumUrl = data[i].forum.url;
         var topicTitle = data[i].title;
-        var post = data[i].posts;
         var topicUrl = data[i].url;
-        var views = data[i].views;
-        var author = data[i].firstPost.author.name;
-        var authorProfileUrl = data[i].firstPost.author.profileUrl;
-        var content = data[i].firstPost.content;
-        var firstDate = data[i].firstPost.date;
+        var firstDate = data[i].created;
         var date = moment(firstDate).fromNow();
 
         // FEED RSS POST GLOBALI
@@ -170,7 +156,7 @@ function appendArticles(data) {
         $cardTitle.html(topicTitle + linkElement);
         $cardSubTitle.html("");
         $cardContentText.html("<p class='card-text'>" + contentParsed + " ...</p>").attr('hidden', false).animateCss('flipInY');
-        $cardTime.html("<div class='mb-1  text-muted'><i title='Risposte' class='fas fa-comments '></i> " + post + " Scritto " + date + " da <a title='Visualizza il profilo utente' href='" + authorProfileUrl + "'>" + author + "</a></div></div> ");
+        $cardTime.html("<div class='mb-1  text-muted'>Scritto " + date + "</div> ");
         $cardSelector.animateCss('flipInY');
 
     }
