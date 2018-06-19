@@ -137,6 +137,7 @@ function appendArticles(data) {
         var topicTitle = data[i].title;
         var topicUrl = data[i].url;
         var firstDate = data[i].created;
+        var content = data[i].description
         var date = moment(firstDate).fromNow();
 
         // FEED RSS POST GLOBALI
@@ -147,15 +148,11 @@ function appendArticles(data) {
         var $cardSubTitle = $('#card' + i + 'newssub');
         var $cardContentText = $('#card'+ i +'newstext');
         var $cardTime = $('#card'+ i +'newstimer');
-        var contentToText = content.replace(/<[^>]*>/g, '');
-        var contentParsed = contentToText.substring(0,200);
-        var linkElement = "<a class='pull-right'><i class='fa fa-external-link'></i></a>";
-        
-        linkElement.href(topicUrl);
+        var linkElement = "<a class='pull-right' href='" + topicUrl + "'>" + topicTitle + "</a>";
 
-        $cardTitle.html(topicTitle + linkElement);
+        $cardTitle.html(linkElement);
         $cardSubTitle.html("");
-        $cardContentText.html("<p class='card-text'>" + contentParsed + " ...</p>").attr('hidden', false).animateCss('flipInY');
+        $cardContentText.html("<p class='card-text'>" + content + "</p>").attr('hidden', false).animateCss('flipInY');
         $cardTime.html("<div class='mb-1  text-muted'>Scritto " + date + "</div> ");
         $cardSelector.animateCss('flipInY');
 
