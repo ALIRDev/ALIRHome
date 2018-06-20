@@ -5,3 +5,7 @@
 .card-deck .card {
     min-width: 220px !important;
 }
+
+.card-title{
+    text-align: center;
+}
