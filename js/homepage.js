@@ -65,7 +65,7 @@ $.fn.extend({
 function generateNews() {
 
     $.ajax({
-        url: "http://37.59.102.107:8190/rssFeed/discussioni",
+        url: "https://cors-anywhere.herokuapp.com/http://37.59.102.107:8190/rssFeed/discussioni",
         type: 'GET',
         dataType: "json",
         timeout: 5000,
@@ -84,7 +84,7 @@ function generateNews() {
 function requestStaffNews() {
 
     $.ajax({
-        url: "http://37.59.102.107:8190/rssFeed/annunci",
+        url: "https://cors-anywhere.herokuapp.com/http://37.59.102.107:8190/rssFeed/annunci",
         type: 'GET',
         dataType: "json",
         timeout: 5000,

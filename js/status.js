@@ -32,7 +32,7 @@ var requestPass = "apritisesamo";
 var authLogin = "Basic " + btoa(requestUser + ":" + requestPass);
 
 $.ajax({
-    url: "http://37.59.102.107:8190/server/data",
+    url: "https://cors-anywhere.herokuapp.com/http://37.59.102.107:8190/server/data",
     type: 'GET',
     dataType: "json",
     timeout: 5000,
