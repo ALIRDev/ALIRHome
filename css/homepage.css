@@ -102,6 +102,10 @@ a {
     color: #0056b3!important;
 }
 
+
+/* RESPONSIVE CSS 
+-------------------------------------------------- */
+
 @media (min-width:40em) {
     .carousel-caption p {
         margin-bottom: 1.25rem;
