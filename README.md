@@ -1,7 +1,14 @@
 # Homepage
 
-Questo repo contiene tutti i file per la Homepage del sito [alir.eu](https://www.alir.eu)
+Template e pagine del sito [alir.eu](https://www.alir.eu)
 
-I file sono caricati in ftp sul sito, la pagina viene minimizzata pre caricamento, in modo da non appesantire il download.
+###### Contenuto
 
-###### Tempo stimato di caricamento post dal sito: 40ms
+Questo repo contiene le pagine del sito modificate e le pagine:
+
+- Homepage ([alir.eu](https://www.alir.eu/))
+- Chi siamo ([alir.eu/about](https://www.alir.eu/about/))
+- Lavora con noi ([alir.eu/jobs](https://www.alir.eu/jobs/))
+- Servizi ([alir.eu/jobs](https://www.alir.eu/services/))
+
+Tutte le pagine sono realizzate in Html5, css3 e javascript.
